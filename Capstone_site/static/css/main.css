@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
 .index-header {
     background-image: url("https://images.unsplash.com/photo-1531842477197-54acf89bff98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2481&q=80");
     background-size: cover;
     height: 700px;
-    color: #000000; 
+    color: #000; 
+    font-family: "Montserrat";
 }
 
 .index-stats {
-    color: #000000; 
+    color: #000; 
 }
+
+
+html{
+    background-color: black;
+    font-family:"Montserrat";
+
+}
+
+

@@ -5,13 +5,9 @@ from datetime import datetime
 import uuid 
 from flask_marshmallow import Marshmallow
 from .helpers import get_image
-
-
 db = SQLAlchemy() 
 login_manager = LoginManager() 
 ma = Marshmallow()
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -45,46 +41,50 @@ class User(db.Model,UserMixin):
     
     def __repr__(self):
         return f"USER: {self.username}"
-    
+
 class Pet(db.Model):
     pet_id = db.Column(db.String, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
-    image = db.Column(db.String, nullable = False)
-    description = db.Column(db.String(200))
+    age = db.Column(db.String(4))
     birthday = db.Column(db.DateTime)
-    location = db.Column(db.String(50))
+    image = db.Column(db.String(500))  
+    breed = db.Column(db.String(100))
+    birthday = db.Column(db.DateTime)
+    fur_color = db.Column(db.String(100))
+    gender = db.Column(db.String(100))
+    home_trained = db.Column(db.Boolean)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.String, db.ForeignKey('user.user_id'), nullable = False) #if we wanted to make a foreign key relationship
 
 
-    def __init__(self, name, birthday, location, image = "", description = ""):
+    def __init__(self, name, age, birthday, breed, fur_color, gender, home_trained,image = ""):
         self.pet_id = self.set_id()
         self.name = name
-        self.user_id = current_user.user_id
+        self.age = age
         self.birthday = birthday
-        self.location = location
-        self.image = self.set_image(image, name)
-        self.description = description
+        self.image = set.self_image(self,breed)
+        self.breed = breed
+        self.fur_color = fur_color
+        self.gender = gender
+        self.home_trained = home_trained
+        self.user_id = current_user.user_id
+      
 
     def set_id(self):
         return str(uuid.uuid4()) #create unique ID 
     
-
-    def set_image(self, image, name):
-        if not image: #aka image is not present
-            image = get_image(name) #adding get_image function which makes an external 3rd party API callh
-            print("api image", image)
-
+    def set_image(self,image,breed):
+        if not image: 
+            image = get_image(breed)
         return image
  
-
     def __repr__(self):
         return f"<PET: {self.name}>"
 
 
 class PetSchema(ma.Schema):
     class Meta: 
-        fields = ['pet_id', 'name', 'image', 'description', 'birthday', 'location'] 
+        fields = ['name', 'age', 'birthday', 'image', 'breed', 'fur_color', 'gender', 'home_trained'] 
 
 
 

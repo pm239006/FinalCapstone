@@ -26,7 +26,12 @@ class RegisterForm(FlaskForm):
 
 class PetForm(FlaskForm):
     pet_name = StringField("Pet Name", validators=[ DataRequired()])
-    image = StringField("Img Url **Optional")
+    age = StringField("Age")
     birthday = StringField("Birthday")
-    description = StringField("Description **Optional")
-    submit = SubmitField('Add Pet') 
+    image = StringField("ImageUrl")
+    breed = StringField("Breed")
+    fur_color = StringField("Fur Color")
+    gender = StringField("Gender")
+    home_trained = BooleanField("Home trained?")
+    submit = SubmitField('Add Pup') 
+

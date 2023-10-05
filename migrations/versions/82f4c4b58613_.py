@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ced75a977475
+Revision ID: 82f4c4b58613
 Revises: 
-Create Date: 2023-10-04 14:50:47.555756
+Create Date: 2023-10-05 12:15:04.552784
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ced75a977475'
+revision = '82f4c4b58613'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,10 +33,13 @@ def upgrade():
     op.create_table('pet',
     sa.Column('pet_id', sa.String(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
-    sa.Column('image', sa.String(), nullable=False),
-    sa.Column('description', sa.String(length=200), nullable=True),
+    sa.Column('age', sa.String(length=4), nullable=True),
     sa.Column('birthday', sa.DateTime(), nullable=True),
-    sa.Column('location', sa.String(length=50), nullable=True),
+    sa.Column('image', sa.String(length=500), nullable=True),
+    sa.Column('breed', sa.String(length=100), nullable=True),
+    sa.Column('fur_color', sa.String(length=100), nullable=True),
+    sa.Column('gender', sa.String(length=100), nullable=True),
+    sa.Column('home_trained', sa.Boolean(), nullable=True),
     sa.Column('date_added', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['user.user_id'], ),

@@ -23,7 +23,6 @@ login_manager.login_message_category = "warning"
 
 app.register_blueprint(site)
 app.register_blueprint(auth)
-# app.register_blueprint(api)
 
 db.init_app(app)
 migrate = Migrate(app, db)

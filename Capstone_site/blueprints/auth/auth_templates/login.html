@@ -4,36 +4,33 @@
 
 
 {% block content %}
+<style> body {background-color: black} </style>
 
 <div class="container d-flex justify-content-center align-items center">
-    <div class="row mt-5 p-5 shadow rounded border border-primary w-75">
-        <div class="col d-flex">
-            <img src="https://images.unsplash.com/photo-1598134493179-51332e56807f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80" class="img-fluid rounded" alt="">
-        </div>
-        <div class="col">
+    <div class="row mt-5 p-5 shadow rounded border border-info w-80 bg-secondary">
             <form class="row g-3" method="POST">
                 {{ form.hidden_tag() }}
-                <h3>Log Into Your Account</h3>
+                <h3 class="text-light">Log Into Your Account</h3>
                 
-                <div class="col-12">
-                    {{ form.email.label }}
-                    {{ form.email(class='form-control mt-2', placeholder = 'email@gmail.com' )}}
+                <div class="col-6">
+                    {{ form.email.label(class = 'text-light') }}
+                    {{ form.email(class='form-control mt-2 bg-dark text-light', placeholder = 'email@gmail.com' )}}
                     {% for error in form.email.errors %}
                         <span class="err-msg">{{ error }}</span>
                     {% endfor %}
                 </div>
                 <div class="col-6">
-                    {{ form.password.label }}
-                    {{ form.password(class='form-control mt-2', placeholder = 'password' )}}
+                    {{ form.password.label(class = 'text-light') }}
+                    {{ form.password(class='form-control mt-2 bg-dark text-light', placeholder = 'password' )}}
                     {% for error in form.password.errors %}
                         <span class="err-msg">{{ error }}</span>
                     {% endfor %}
                 </div>
                 <div class="col-12">
-                    {{ form.remember_me() }} {{ form.remember_me.label }}
+                    {{ form.remember_me() }} {{ form.remember_me.label(class = 'text-light') }}
                 </div>
                 <div class="col-12">
-                    {{ form.submit(class='btn btn-primary') }}
+                    {{ form.submit(class='btn btn-info text-light') }}
                 </div>
 
             </form>

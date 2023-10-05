@@ -1,37 +1,36 @@
-# from flask import Blueprint, request, jsonify
-# from flask_jwt_extended import create_access_token,jwt_required,get_jwt_identity
+from flask import Blueprint, request, jsonify
+from flask_jwt_extended import create_access_token,jwt_required,get_jwt_identity
+from Capstone_site.models import User, Pet, db,pets_schema,pet_schema
 
-# from Capstone_site.models import User, Pet   # db,products_schema,product_schema, Order
-
-# api = Blueprint('api',__name__,url_prefix='/api')
+api = Blueprint('api',__name__,url_prefix='/api')
 
 
-# @api.route('/token', methods= ['GET','POST'])
-# def token():
-#     data = request.json
-#     if data:
-#             client_id = data['client_id'] #looking for the key of client_id on the dictionary passed to us
-#             access_token = create_access_token(identity=client_id) 
-#             return {
-#                 'status' : 200,
-#                 'access_token' : access_token 
-#             }
+@api.route('/token', methods= ['GET','POST'])
+def token():
+    data = request.json
+    if data:
+            client_id = data['client_id'] #looking for the key of client_id on the dictionary passed to us
+            access_token = create_access_token(identity=client_id) 
+            return {
+                'status' : 200,
+                'access_token' : access_token 
+            }
         
-#     else:
-#             return {
-#                 'status': 400,
-#                 'message': 'Missing Client Id. Try Again'
-#             }
+    else:
+            return {
+                'status': 400,
+                'message': 'Missing Client Id. Try Again'
+            }
 
 # #creating our READ data request for shop
 
-# @api.route('/index')
-# @jwt_required()
-# def get_mainpage():
-#     mainpage = Pet.query.all() # its a list of objs, you cant send a list of objs thru api calls
+@api.route('/index')
+@jwt_required()
+def get_mainpage():
+    mainpage = Pet.query.all() # its a list of objs, you cant send a list of objs thru api calls
 
-#     response = pets_schema.dump(mainpage)
-#     return jsonify(response) # this will stringify the list to send to our front end 
+    response = pets_schema.dump(mainpage)
+    return jsonify(response) # this will stringify the list to send to our front end 
 
 # #creating our READ data request for orders READ associated with 'GET' 
 

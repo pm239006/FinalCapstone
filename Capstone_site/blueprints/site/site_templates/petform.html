@@ -1,3 +1,4 @@
+<style> body {background-color: black} </style>
 <form class="row g-3" method="POST">
     {{ form.hidden_tag() }}
     <div class="col-md-12">
@@ -6,16 +7,20 @@
         {% for error in form.pet_name.errors %}
             <span class="err-msg">{{ error }}</span>
         {% endfor %}
-    </div>
-    <div class="col-md-12">
-        {{ form.image.label }}
-        {{form.image(class='form-control mt-2')}}
-    </div>
+    <br>
     <div class="col-12">
-        {{ form.description.label }}
-        {{ form.description(class='form-control mt-2')}}
+        {{ form.age.label }}
+        {{ form.age(class='form-control mt-2')}}
         
     </div>
+    <div class="col-12">
+        {{ form.image.label }}
+        {{ form.image(class='form-control mt-2' )}}
+        {% for error in form.image.errors %}
+            <span class="err-msg">{{ error }}</span>
+        {% endfor %}
+    </div>
+
     <div class="col-12">
         {{ form.birthday.label }}
         {{ form.birthday(class='form-control mt-2', placeholder = '6/7/2020' )}}
@@ -24,7 +29,28 @@
         {% endfor %}
     </div>
     <div class="col-12">
+        {{ form.breed.label }}
+        {{ form.breed(class='form-control mt-2', placeholder = 'French Bulldog' )}}
+        {% for error in form.breed.errors %}
+            <span class="err-msg">{{ error }}</span>
+        {% endfor %}
+    <div class="col-12">
+        {{ form.fur_color.label }}
+        {{ form.fur_color(class='form-control mt-2' , placeholder = 'Brown')}}
+        
+    </div>
+    <div class="col-12">
+        {{ form.gender.label }}
+        {{ form.gender(class='form-control mt-2' , placeholder = 'Boy')}}
+        
+    </div>
+    <div class="col-12">
+        {{ form.home_trained.label }}
+        {{ form.home_trained()}}
+
+        
+    </div>
+    <div class="col-4">
         {{ form.submit(class='btn btn-info') }}
     </div>
-
 </form>

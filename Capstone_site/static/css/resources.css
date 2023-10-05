@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.pup_selector{
+    width: 400px;
+}
+
+
+.pupImage {
+    margin: 16px auto;
+    object-fit: contain;
+    width: 50%;
+    cursor: pointer;
+
+}
+

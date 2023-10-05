@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect
 
 #internal imports
-from Capstone_site.models import Pet, User, db # product_schema, products_schema
+from Capstone_site.models import Pet, PetSchema, User, db, pet_schema, pets_schema
 from Capstone_site.forms import PetForm
 
 
@@ -21,16 +21,20 @@ def create():
 
         # try: 
         name = createform.pet_name.data 
-        desc = createform.description.data
-        image = createform.image.data
+        age = createform.age.data
         birthday = createform.birthday.data
+        breed = createform.birthday.data
+        fur_color = createform.fur_color.data
+        gender = createform.gender.data
+        home_trained = createform.home_trained.data 
+ 
+        pets = Pet(name, age,  birthday, breed, fur_color, gender, home_trained)
+       
 
-        community = Pet(name, birthday, image, desc) 
-
-        db.session.add(community)
+        db.session.add(pets)
         db.session.commit()
 
-        flash(f"You have successfully added your pet {name}", category='success')
+        flash(f"You have successfully added {name}", category='success')
         return redirect('/')
 
         # except:
@@ -39,54 +43,50 @@ def create():
         
     return render_template('create.html', form=createform)
 
-#create our first route
+#create our display all pets route
 @site.route('/')
 def community():
-
-    # make the api call here 
-    # make a func in helpers and call it here 
-
-    community = Pet.query.all()
+    pets = Pet.query.all()
     users = User.query.all()
 
-    index_stats = {
-        'pets in community': len(community),
-        'users' : len(users)
-    }
-
-    return render_template('index.html', stats=index_stats) # put in variable for the api call 
+    return render_template('index.html',pets=pets) # put in variable for the api call 
 
 
+@site.route('/resources')
+def resources():
+
+    return render_template('resources.html')
 
 
-
-#create our CREATE route
+#create our UPDATE route
 @site.route('/index/update/<id>', methods = ['GET', 'POST'])
 def update(id):
 
     updateform = PetForm()
-    pet = Pet.query.get(id) #WHERE clause WHERE product.prod_id == id 
+    pets = Pet.query.get(id) #WHERE clause WHERE product.prod_id == id 
 
     if request.method == 'POST' and updateform.validate_on_submit():
 
         try: 
-            pet.name = updateform.name.data
-            pet.description = updateform.description.data
-            pet.set_image(updateform.image.data, updateform.name.data) #calling upon that set_image method to set our image!
-            pet.birthday = updateform.birthday.data
 
-            
-
+            pet_name = updateform.pet_name.data 
+            pet_age = updateform.age.data
+            pet_birthday = updateform.birthday.data
+            pet_breed = updateform.breed.data
+            pet_fur_color = updateform.fur_color.data
+            pet_gender = updateform.gender.data
+            pet_home_trained = updateform.home_trained.data
+        
             db.session.commit() #commits the changes to our objects 
 
-            flash(f"You have successfully updated product {pet.name}", category='success')
+            flash(f"You have successfully updated product {PetSchema.name}", category='success')
             return redirect('/')
 
         except:
             flash("We were unable to process your request. Please try again", category='warning')
             return redirect('/index/update')
         
-    return render_template('update.html', form=updateform, pet=pet)
+    return render_template('update.html', form=updateform)
 
 @site.route('/index/delete/<id>')
 def delete(id):
@@ -98,3 +98,17 @@ def delete(id):
 
     return redirect('/')
 
+
+# @site.route('/upload', methods=['POST'])
+# def upload():
+#   form = UploadForm(request.form)
+#   if form.validate():
+#     image = form.image.data
+#     filename = image.filename
+#     image.save('/path/to/images/' + filename)
+
+#     new_image = Image(name=form.name.data, image=image)
+#     db.session.add(new_image)
+#     db.session.commit()
+
+#     return redirect('/')
