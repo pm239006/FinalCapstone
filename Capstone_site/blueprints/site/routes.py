@@ -68,18 +68,17 @@ def update(id):
     if request.method == 'POST' and updateform.validate_on_submit():
 
         try: 
-
-            pet_name = updateform.pet_name.data 
-            pet_age = updateform.age.data
-            pet_birthday = updateform.birthday.data
-            pet_breed = updateform.breed.data
-            pet_fur_color = updateform.fur_color.data
-            pet_gender = updateform.gender.data
-            pet_home_trained = updateform.home_trained.data
+            pets.name = updateform.pet_name.data 
+            pets.age = updateform.age.data
+            pets.birthday = updateform.birthday.data
+            pets.breed = updateform.breed.data
+            pets.fur_color = updateform.fur_color.data
+            pets.gender = updateform.gender.data
+            pets.home_trained = updateform.home_trained.data
         
             db.session.commit() #commits the changes to our objects 
 
-            flash(f"You have successfully updated product {PetSchema.name}", category='success')
+            flash(f"You have successfully updated pet {pets.name}", category='success')
             return redirect('/')
 
         except:

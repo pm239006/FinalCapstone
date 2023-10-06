@@ -3,19 +3,19 @@
     {{ form.hidden_tag() }}
     <div class="col-md-12">
         {{ form.pet_name.label }}
-        {{form.pet_name(class='form-control mt-2', placeholder = 'French Bulldog')}}
+        {{form.pet_name(class='form-control mt-2 text-light bg-dark', placeholder = 'Name')}}
         {% for error in form.pet_name.errors %}
             <span class="err-msg">{{ error }}</span>
         {% endfor %}
     <br>
     <div class="col-12">
         {{ form.age.label }}
-        {{ form.age(class='form-control mt-2')}}
+        {{ form.age(class='form-control mt-2 text-light bg-dark' , placeholder = '2')}}
         
     </div>
     <div class="col-12">
         {{ form.image.label }}
-        {{ form.image(class='form-control mt-2' )}}
+        {{ form.image(class='form-control mt-2 text-light bg-dark' )}}
         {% for error in form.image.errors %}
             <span class="err-msg">{{ error }}</span>
         {% endfor %}
@@ -23,34 +23,37 @@
 
     <div class="col-12">
         {{ form.birthday.label }}
-        {{ form.birthday(class='form-control mt-2', placeholder = '6/7/2020' )}}
+        {{ form.birthday(class='form-control mt-2 text-light bg-dark', placeholder = '6/7/20' )}}
         {% for error in form.birthday.errors %}
             <span class="err-msg">{{ error }}</span>
         {% endfor %}
     </div>
     <div class="col-12">
         {{ form.breed.label }}
-        {{ form.breed(class='form-control mt-2', placeholder = 'French Bulldog' )}}
+        {{ form.breed(class='form-control mt-2 text-light bg-dark', placeholder = 'French Bulldog' )}}
         {% for error in form.breed.errors %}
             <span class="err-msg">{{ error }}</span>
         {% endfor %}
     <div class="col-12">
         {{ form.fur_color.label }}
-        {{ form.fur_color(class='form-control mt-2' , placeholder = 'Brown')}}
+        {{ form.fur_color(class='form-control mt-2 text-light bg-dark' , placeholder = 'Merle')}}
         
     </div>
     <div class="col-12">
         {{ form.gender.label }}
-        {{ form.gender(class='form-control mt-2' , placeholder = 'Boy')}}
+        {{ form.gender(class='form-control mt-2 text-light bg-dark' , placeholder = 'Boy')}}
         
     </div>
     <div class="col-12">
         {{ form.home_trained.label }}
         {{ form.home_trained()}}
 
-        
+        <br>
+    
+        <br>
+
     </div>
     <div class="col-4">
-        {{ form.submit(class='btn btn-info') }}
+        {{ form.submit(class='btn btn-info text-light') }}
     </div>
 </form>

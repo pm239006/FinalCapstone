@@ -33,5 +33,5 @@ class PetForm(FlaskForm):
     fur_color = StringField("Fur Color")
     gender = StringField("Gender")
     home_trained = BooleanField("Home trained?")
-    submit = SubmitField('Add Pup') 
+    submit = SubmitField('Add/Update') 
 

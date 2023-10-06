@@ -2,12 +2,13 @@
 
 
 {% block content %}
+<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap' rel='stylesheet' type='text/css'>
 <style> body {background-color: black} </style>
 <div class="header_card bg-info text-light">
     <div class="card-body">
-      <h1 class="card-title justify-content-center bg-info text-light">Welcome to FrenchiePage!</h1>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">
+      <h1 class="card-title justify-content-center bg-info text-light text-center">Welcome to FrenchiePage!</h1>
+      <h6 class="card-subtitle mb-2 text-muted">Priscilla Mendez</h6>
+      <p class="card-text text-center ">
         Welcome to FrenchiePage - the ultimate online hub for all things French Bulldogs! 🐾
         <br>
         Are you a proud French Bulldog owner or a passionate admirer of these adorable bat-eared companions? Look no further, because FrenchiePage is your exclusive passport to a vibrant and engaging community dedicated entirely to French Bulldogs.
@@ -16,39 +17,28 @@
         <br>
         🌟 Here's what you can expect on FrenchiePage:
     <br></p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+    <div class="d-flex flex-row">
+    <div class = "p-6">
+    <img class="card-img-top" src="https://images.unsplash.com/photo-1579813668048-44f09dd6e4ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80" alt="Card image cap">
+    </div>
+    <div class = "p-6">
+    <img class="card-img-top" src="https://images.unsplash.com/photo-1554300668-50f3521dc276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2931&q=80" alt="Card image cap">
     </div>
   </div>
+</div>
+</div>
+</div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="card text-center">
+<div class="card">
     <div class="card-body bg-dark text-light">
       <h5 class="card-title">🐾 Create Your Dog's Profile:</h5>
       <p class="card-text">Start by creating a personalized profile for your dog, complete with their name, breed, age, and a charming bio that captures their unique personality. Don't forget to upload adorable photos that showcase your dog's best angles!</p>
       <a href="/signup" class="btn btn-info">Sign up</a>
     </div>
-
-<div class="card">
+</div>
+<div class="card text-center">
     <div class="card-body bg-dark text-light">
         <h5 class="card-title">🐶 Find Doggy Playdates:</h5>
         <p class="card-text">Discover like-minded dog owners in your area who are eager to set up playdates. Simply search for dogs with similar interests or those in your neighborhood, and arrange meetups at the local dog park, a pet-friendly café, or even for a scenic hike.</p>
@@ -56,7 +46,7 @@
     </div>
     </div>
 
-<div class="card text-right">
+<div class="card">
     <div class="card-body bg-dark text-light">
         <h5 class="card-title">🐕 Expert Advice and Resources:</h5>
         <p class="card-text">Access a wealth of dog-related information, from training tips and health advice to product recommendations and rescue organizations. Our community is here to support and guide you through every stage of your dog's life.</p>
@@ -68,12 +58,15 @@
         <h5 class="card-title">🐶 Safety First:</h5>
         <p class="card-text ">At FrenchiePage, safety is our priority. We offer robust privacy settings to ensure you share your dog's adventures with only the people you trust.Join the pack at FrenchiePage today and let your dog embark on a new era of socialization and friendship! Connect, share, and make memories with other dog lovers who understand the joys and challenges of life with a four-legged companion. Let the tail-wagging begin! 🐕</p>
         <a href="/" class="btn btn-info">My Profile</a>
-    </div>
-    </div>
+        <br>
 
+    </div>
+    </div>
+    <br>
                         {% if current_user.is_authenticated %}
-                        <h5 class="text-dark">Your pets and posts will show up here:</h5>
-                        <a href="{{ url_for('site.create' )}}" class="btn btn-outline-info text-dark mt-5">Add Pup</a>
+                        <h5 class="text-muted text-center mt-2"> - "Happiness is a warm puppy." - Charles M. Schulz- </h5>
+                        <br>
+                        <a href="{{ url_for('site.create' )}}" class="col d-flex justify-content-center btn btn-outline-info text-light"><b>Add Pup</b></a>
                         {% else %}
                         <a href="/login" class="btn btn-outline-info bg-secondary">Log In</a>
                         {% endif %}
@@ -81,31 +74,28 @@
             </div>
         </div>
 
-
-
-
             {% if current_user.is_authenticated %}
             <div class="row bg-info p-3">
-                <div class="col d-flex justify-content-center text-light">Your Pets: </div> 
+                <div class="col d-flex justify-content-center text-light"><b>Your Pets ⬇️ </b></div> 
             </div>
             {% for pet in pets %}
                 <div class="row mt-5 mb-5 justify-content-center">
-                    <div class="card d-flex rounded shadow flex-row w-50 p-3">
+                    <div class="card d-flex rounded shadow flex-row w-50 p-3 bg-secondary text-white">
                         <div class="d-flex align-items-center" style="max-width:230px">
                             <img src="{{ pet.image }}" class="img-fluid rounded" alt="doggie">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center p-4">
-                            <h5 class="card-title">Name: {{ pet.name }}</h5>
-                            <p class="card-text">Age: {{ pet.age }}</p>
-                            <p class="card-text">Birthday:{{ pet.birthday }}</p>
-                            <p class="card-text">Cute Pic: {{ pet.image }}</p>
-                            <p class="card-text">Breed:{{ pet.breed }}</p>
-                            <p class="card-text">Coat Color:{{ pet.fur_color }}</p>
-                            <p class="card-text">Gender:{{ pet.gender }}</p>
-                            <p class="card-text">Home Trained?{{ pet.home_trained }}</p>
+                            <h5 class="card-title">Name - {{ pet.name }}</h5>
+                            <p class="card-text">Age - {{ pet.age }}</p>
+                            <p class="card-text">Birthday - {{ pet.birthday }}</p>
+                            <p class="card-text">Cute Pic - {{ pet.image }}</p>
+                            <p class="card-text">Breed - {{ pet.breed }}</p>
+                            <p class="card-text">Coat Color - {{ pet.fur_color }}</p>
+                            <p class="card-text">Gender - {{ pet.gender }}</p>
+                            <p class="card-text">Home Trained? - {{ pet.home_trained }}</p>
                             <div class="mt-2">
-                                <a href="{{ url_for('site.update', id=pet.pet_id ) }}" class="card-link btn btn-warning">Update</a>
-                                <a href="{{ url_for('site.delete', id=pet.pet_id ) }}" class="card-link btn btn-danger">Delete</a>
+                                <a href="{{ url_for('site.update', id=pet.pet_id ) }}" class="card-link btn btn-info">Update</a>
+                                <a href="{{ url_for('site.delete', id=pet.pet_id ) }}" class="card-link btn btn-dark">Delete</a>
                             </div>
                         </div>
                     </div>
