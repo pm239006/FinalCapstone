@@ -42,6 +42,31 @@ const fillPupDescription = (weight,height,name,bred_for,breed_group,life_span,te
     document.querySelector('#pup-temperament').insertAdjacentHTML("beforeend", temperament);
 }
 
+const fillPupWeight= (weight) => {
+    document.querySelector('#pup-weight').insertAdjacentHTML("beforeend", weight)
+}
+
+const fillPupHeight = (height) => {
+    document.querySelector('#pup-height').insertAdjacentHTML("beforeend", height)
+}
+const fillPupName = (name) => {
+    document.querySelector('#pup-name').insertAdjacentHTML("beforeend", name)
+}
+
+const fillPupBred_For = (bred_for) => {
+    document.querySelector('#pup-bred_for').insertAdjacentHTML("beforeend", bred_for)
+}
+const fillPupBreed_Group = (breed_group) => {
+    document.querySelector('#pup-breed_group').insertAdjacentHTML("beforeend", breed_group)
+}
+
+const fillPupLife_Span = (life_span) => {
+    document.querySelector('#pup-life_span').insertAdjacentHTML("beforeend", life_span)
+}
+
+const fillPupTemperament = (temperament)=> {
+    document.querySelector('#pup-temperament').insertAdjacentHTML("beforeend", temperament)
+}
 
 
 const getPupByBreed = async (breedId) => {
@@ -54,8 +79,6 @@ const getPupByBreed = async (breedId) => {
     const height = breedInfo.height.imperial
 
     fillPupImage(imageUrl);
-   
-    fillPupDescription(weight,height,name,bred_for,breed_group,life_span,temperament);
     fillPupWeight(weight);
     fillPupHeight(height);
     fillPupName(name);
