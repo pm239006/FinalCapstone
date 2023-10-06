@@ -27,6 +27,11 @@ const fillPupImage = (imageUrl) => {
     document.querySelector('#pupImage').setAttribute('src', imageUrl);
 }
 
+// const fillPupWeight = (weight) => {
+//     document.querySelector('#pup-weight').setAttribute('src', weight);
+
+// }
+
 const fillPupDescription = (weight,height,name,bred_for,breed_group,life_span,temperament) => {
     document.querySelector('#pup-description').insertAdjacentHTML("beforeend", weight);
     document.querySelector('#pup-description').insertAdjacentHTML("beforeend", height);
