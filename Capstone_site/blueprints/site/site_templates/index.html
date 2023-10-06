@@ -82,13 +82,13 @@
                 <div class="row mt-5 mb-5 justify-content-center">
                     <div class="card d-flex rounded shadow flex-row w-50 p-3 bg-secondary text-white">
                         <div class="d-flex align-items-center" style="max-width:230px">
-                            <img src="{{ pet.image }}" class="img-fluid rounded" alt="doggie">
+                            <img src="{{ pet.image }}" id="pup_pics" alt="doggie">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center p-4">
                             <h5 class="card-title">Name - {{ pet.name }}</h5>
                             <p class="card-text">Age - {{ pet.age }}</p>
                             <p class="card-text">Birthday - {{ pet.birthday }}</p>
-                            <p class="card-text">Cute Pic - {{ pet.image }}</p>
+                            <img class="img-fluid" alt="Responsive image" src=" {{ pet.image }}">Cute Pic -</image>
                             <p class="card-text">Breed - {{ pet.breed }}</p>
                             <p class="card-text">Coat Color - {{ pet.fur_color }}</p>
                             <p class="card-text">Gender - {{ pet.gender }}</p>

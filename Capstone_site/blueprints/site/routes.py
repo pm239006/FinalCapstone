@@ -26,12 +26,13 @@ def create():
         breed = createform.birthday.data
         fur_color = createform.fur_color.data
         gender = createform.gender.data
-        home_trained = createform.home_trained.data 
+        home_trained = createform.home_trained.data
+        image = createform.image.data
  
-        pets = Pet(name, age,  birthday, breed, fur_color, gender, home_trained)
+        pet = Pet(name, age,  birthday, breed, fur_color, gender, home_trained, image)
        
 
-        db.session.add(pets)
+        db.session.add(pet)
         db.session.commit()
 
         flash(f"You have successfully added {name}", category='success')

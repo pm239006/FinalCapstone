@@ -62,7 +62,7 @@ class Pet(db.Model):
         self.name = name
         self.age = age
         self.birthday = birthday
-        self.image = set.self_image(self,breed)
+        self.image = self.set_image(image,breed)
         self.breed = breed
         self.fur_color = fur_color
         self.gender = gender

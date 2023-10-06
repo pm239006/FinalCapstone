@@ -17,7 +17,9 @@
         {{ form.image.label }}
         {{ form.image(class='form-control mt-2 text-light bg-dark' )}}
         {% for error in form.image.errors %}
-            <span class="err-msg">{{ error }}</span>
+
+        
+        <span class="err-msg">{{ error }}</span>
         {% endfor %}
     </div>
 
